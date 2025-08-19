@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend-dev
+    networks:
+      - pokerangers-network
+
+  backend-dev:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile.dev
+    ports:
+      - "5001:8080"
+    volumes:
+      - .:/src
+      - dotnet_packages:/root/.nuget/packages
+      - pokemon_data_dev:/src/data
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
+    networks:
+      - pokerangers-network
+
+networks:
+  pokerangers-network:
+    driver: bridge
+
+volumes:
+  dotnet_packages:
+  pokemon_data_dev:
