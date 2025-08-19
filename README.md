@@ -2,14 +2,14 @@
 
 A full-stack web application for browsing and managing Pokemon datas. I hope you enjoy! I have only used C# for Unity development so I leaned heavily on the most well-trodden paths for frameworks and choices.
 
-## =� Requirements
+## Requirements
 
 ### System Requirements
 - **Docker** & **Docker Compose** (recommended)
 - **Node.js** 18+ (for local development)
 - **.NET 9.0** (for local development)
 
-## =� Quick Start
+## Quick Start
 
 ### Option 1: Docker (Recommended because who knows what you have going on) (make sure you don't have anything else on ports ;> )
 
@@ -172,18 +172,14 @@ dotnet test           # xUnit tests
 dotnet test --coverage # Coverage reports
 ```
 
-
-
-
-## =� Monitoring & Observability
+## Monitoring & Observability
 
 ### Implemented
 - Structured logging (.NET)
 - Docker health checks
 - API error responses
 
-
-## =� License
+## License?
 
 This project is created for demonstration purposes as part of a software engineering job application. Don't sue me nintendo
 
