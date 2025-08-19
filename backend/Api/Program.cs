@@ -2,13 +2,21 @@ using Api.Models;
 using Api.Services;
 using Api.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "PokeRangers API",
+        Version = "v1",
+        Description = "Pokemon data API for PokeRangers application"
+    });
+});
 
 // Add Entity Framework
 builder.Services.AddDbContext<PokemonDbContext>(options =>
@@ -76,8 +84,12 @@ app.UseCors("AllowFrontend");
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "PokeRangers API v1");
+        c.RoutePrefix = "swagger";
+    });
 }
 
 // Only redirect to HTTPS in production

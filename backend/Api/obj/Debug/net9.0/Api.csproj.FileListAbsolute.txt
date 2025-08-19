@@ -155,3 +155,4 @@
 /src/backend/Api/obj/Debug/net9.0/Api.genruntimeconfig.cache
 /src/backend/Api/obj/Debug/net9.0/ref/Api.dll
 /src/backend/Api/bin/Debug/net9.0/static/pokemon_.json
+/src/backend/Api/obj/Debug/net9.0/Api.sourcelink.json
